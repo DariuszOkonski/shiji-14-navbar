@@ -303,7 +303,6 @@ nav {
 /* 160px */
 
 .links-container {
-  height: 0;
   overflow: hidden;
   transition: var(--transition);
 }

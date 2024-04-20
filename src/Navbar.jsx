@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { HiMiniBarsArrowDown, HiMiniBarsArrowUp } from 'react-icons/hi2';
 import { links, social } from './data';
@@ -6,9 +6,19 @@ import logo from './logo.svg';
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
 
   const toggleLinks = () => {
+    console.log(linksRef.current.getBoundingClientRect());
+
     setShowLinks(!showLinks);
+  };
+
+  const linkStyles = {
+    height: showLinks
+      ? `${linksRef.current.getBoundingClientRect().height}px`
+      : '0px',
   };
 
   return (
@@ -22,8 +32,12 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className={`links-container ${showLinks && 'show-container'}`}>
-          <ul className='links'>
+        <div
+          className='links-container'
+          ref={linksContainerRef}
+          style={linkStyles}
+        >
+          <ul className='links' ref={linksRef}>
             {links.map((link) => {
               const { id, text, url } = link;
               return (
