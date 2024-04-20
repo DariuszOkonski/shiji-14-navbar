@@ -10,8 +10,6 @@ const Navbar = () => {
   const linksRef = useRef(null);
 
   const toggleLinks = () => {
-    console.log(linksRef.current.getBoundingClientRect());
-
     setShowLinks(!showLinks);
   };
 
@@ -48,6 +46,17 @@ const Navbar = () => {
             })}
           </ul>
         </div>
+
+        <ul className='social-icons'>
+          {social.map((socialIcon) => {
+            const { id, url, icon } = socialIcon;
+            return (
+              <li key={id}>
+                <a href={url}>{icon}</a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
