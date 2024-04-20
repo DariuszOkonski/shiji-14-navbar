@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { HiMiniBarsArrowDown, HiMiniBarsArrowUp } from 'react-icons/hi2';
 import { links, social } from './data';
 import logo from './logo.svg';
 
@@ -16,6 +17,7 @@ const Navbar = () => {
         <div className='nav-header'>
           <img src={logo} alt='logo' className='logo' />
           <button className='nav-toggle' onClick={toggleLinks}>
+            {/* {showLinks ? <HiMiniBarsArrowUp /> : <HiMiniBarsArrowDown />} */}
             <FaBars />
           </button>
         </div>
